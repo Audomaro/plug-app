@@ -1,0 +1,65 @@
+{
+  "routes": [
+    {
+      "description": "Descarga de todos",
+      "input": {
+        "name": "plugin-input-webapi",
+        "config": {
+          "url": "https://jsonplaceholder.typicode.com/todos",
+          "method": "GET",
+          "headers": {}
+        }
+      },
+      "processor": {
+        "name": "plugin-processor-consolelog",
+        "config": {}
+      },
+      "output": {
+        "name": "plugin-output-txtfile",
+        "config": {
+          "filePath": "typicode_todos.txt"
+        }
+      }
+    },
+    {
+      "description": "Descarga de post",
+      "input": {
+        "name": "plugin-input-webapi",
+        "config": {
+          "url": "https://jsonplaceholder.typicode.com/posts",
+          "method": "GET",
+          "headers": {}
+        }
+      },
+      "processor": {
+        "name": "plugin-processor-consolelog",
+        "config": {}
+      },
+      "output": {
+        "name": "plugin-output-txtfile",
+        "config": {
+          "filePath": "typicode_posts.txt"
+        }
+      }
+    },
+    {
+      "description": "Leer JSON, imprimir y guardar en archivo",
+      "input": {
+        "name": "plugin-input-jsonfile",
+        "config": {
+          "filePath": "input.json"
+        }
+      },
+      "processor": {
+        "name": "plugin-processor-consolelog",
+        "config": {}
+      },
+      "output": {
+        "name": "plugin-output-jsonfile",
+        "config": {
+          "filePath": "transform_output.json"
+        }
+      }
+    }
+  ]
+}

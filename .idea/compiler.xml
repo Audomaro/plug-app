@@ -2,24 +2,37 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="plugin-processor-log" />
-        <module name="plugin-output-file" />
-        <module name="core-app" />
+        <module name="plugin-input-jsonfile" />
+        <module name="plugin-output-txtfile" />
+        <module name="plugin-processor-consolelog" />
+        <module name="executor" />
         <module name="plugin-input-webapi" />
+        <module name="plugin-output-jsonfile" />
+        <module name="plugin-api" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="core-app" target="21" />
+      <module name="input-jsonfile" target="21" />
+      <module name="plugin-input-webapi (1)" target="21" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="core-app" options="-parameters" />
+      <module name="executor" options="-parameters" />
       <module name="plugin-api" options="-parameters" />
+      <module name="plugin-input-jsonfile" options="-parameters" />
       <module name="plugin-input-webapi" options="-parameters" />
-      <module name="plugin-output-file" options="-parameters" />
-      <module name="plugin-processor-log" options="-parameters" />
+      <module name="plugin-input-webapi (1)" options="-parameters" />
+      <module name="plugin-output-jsonfile" options="-parameters" />
+      <module name="plugin-output-txtfile" options="-parameters" />
+      <module name="plugin-processor-consolelog" options="-parameters" />
     </option>
   </component>
 </project>

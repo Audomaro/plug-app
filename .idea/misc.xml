@@ -11,7 +11,20 @@
         <option value="$PROJECT_DIR$/plugin-input-webapi/pom.xml" />
         <option value="$PROJECT_DIR$/plugin-api/pom.xml" />
         <option value="$PROJECT_DIR$/core-app/pom.xml" />
+        <option value="$PROJECT_DIR$/plugin-input-json-file/pom.xml" />
+        <option value="$PROJECT_DIR$/input-jsonfile/pom.xml" />
+        <option value="$PROJECT_DIR$/plugin-input-jsonfile/pom.xml" />
+        <option value="$PROJECT_DIR$/plugin-output-txtfile/pom.xml" />
+        <option value="$PROJECT_DIR$/plugin-processor-consolelog/pom.xml" />
+        <option value="$PROJECT_DIR$/plugin-output-jsonfile/pom.xml" />
+        <option value="$PROJECT_DIR$/executor/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/core-app/pom.xml" />
+        <option value="$PROJECT_DIR$/input-jsonfile/pom.xml" />
+      </set>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="21" project-jdk-type="JavaSDK">

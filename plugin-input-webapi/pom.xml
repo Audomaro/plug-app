@@ -6,13 +6,13 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.5.3</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath/>
 	</parent>
 	<groupId>com.example.plugins</groupId>
 	<artifactId>plugin-input-webapi</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>plugin-input-webapi</name>
-	<description>Interfaces comunes para plugins</description>
+	<description>Se conecta a un webapi y obtiene los datos de este</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -60,9 +60,8 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.example.plugins</groupId>
-			<artifactId>plugin-api</artifactId>
-			<version>1.0.0</version>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
 		</dependency>
 	</dependencies>
 

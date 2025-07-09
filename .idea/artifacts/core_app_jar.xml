@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="jar" name="core-app:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/core_app_jar</output-path>
+    <output-path>$PROJECT_DIR$/out/</output-path>
     <root id="archive" name="core-app.jar">
       <element id="module-output" name="core-app" />
       <element id="module-output" name="plugin-api" />

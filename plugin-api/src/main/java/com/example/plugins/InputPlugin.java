@@ -4,7 +4,7 @@ import org.springframework.plugin.core.Plugin;
 
 import java.util.Map;
 
-public interface InputPlugin extends Plugin<String> {
+public interface InputPlugin<T> extends Plugin<String> {
     void configure(Map<String, Object> config);
-    String read();
+    T read();
 }
