@@ -3,6 +3,7 @@ package com.example.plugins.output.txtfile;
 import com.example.plugins.OutputPlugin;
 import com.example.plugins.output.txtfile.dtos.FileOutputConfig;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.io.FileWriter;
@@ -10,13 +11,14 @@ import java.io.IOException;
 import java.util.Map;
 
 @Component
+@RequiredArgsConstructor
 public class FileOutputPlugin implements OutputPlugin<String> {
-
+    private final ObjectMapper objectMapper;
     private FileOutputConfig config;
 
     @Override
     public void configure(Map<String, Object> configMap) {
-        this.config = new ObjectMapper().convertValue(configMap, FileOutputConfig.class);
+        this.config = objectMapper.convertValue(configMap, FileOutputConfig.class);
     }
 
     @Override

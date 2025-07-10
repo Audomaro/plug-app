@@ -3,28 +3,28 @@
 
 ## Descripción general
 
-Este proyecto está basado en una arquitectura plugable con plugins de entrada (Input), procesamiento (Processor) y salida (Output).  
+Este proyecto está basado en una arquitectura plugable con plugins de entrada (Input), procesamiento (Processor) y salida (Output).
 Las rutas de procesamiento se configuran vía archivo JSON (`routes.json`) donde se definen los plugins a usar y sus configuraciones.
 
-Cada plugin es un módulo independiente que se empaqueta en un JAR y se carga dinámicamente en la ejecución.  
+Cada plugin es un módulo independiente que se empaqueta en un JAR y se carga dinámicamente en la ejecución.
 El executor lee las rutas, carga los plugins correspondientes, y ejecuta el flujo Input → Processor → Output.
 
 ## Módulos principales
 
-- **plugin-api**  
+- **plugin-api**
   Define las interfaces comunes para plugins:
-  - `InputPlugin<T>`  
-  - `ProcessorPlugin<I, O>`  
+  - `InputPlugin<T>`
+  - `ProcessorPlugin<I, O>`
   - `OutputPlugin<T>`
 
-- **Plugins implementados** (ejemplos):  
-  - `plugin-input-webapi`: Lee datos desde una API REST  
-  - `plugin-input-jsonfile`: Lee datos JSON desde archivo  
-  - `plugin-output-txtfile`: Escribe datos tipo String en archivo TXT  
-  - `plugin-output-jsonfile`: Escribe datos JSON en archivo  
+- **Plugins implementados** (ejemplos):
+  - `plugin-input-webapi`: Lee datos desde una API REST
+  - `plugin-input-jsonfile`: Lee datos JSON desde archivo
+  - `plugin-output-txtfile`: Escribe datos tipo String en archivo TXT
+  - `plugin-output-jsonfile`: Escribe datos JSON en archivo
   - `plugin-processor-consolelog`: Muestra datos en consola (logging)
 
-- **executor**  
+- **executor**
   Aplicación Spring Boot que lee el archivo JSON con las rutas, carga los JARs de plugins y ejecuta las rutas.
 
 ## Estructura del JSON de configuración (`routes.json`)
@@ -119,3 +119,30 @@ java -jar executor.jar
 - Los tipos genéricos `<T>`, `<I, O>` permiten flexibilidad en tipos de datos entre plugins.
 - El executor crea un `URLClassLoader` por ruta para cargar dinámicamente los plugins.
 - El procesamiento sigue la cadena: Input → Processor → Output.
+- Prompt
+
+  ```md
+    Quiero crear un nuevo plugin para un sistema plugable en Java con Spring Boot y Lombok. Este plugin debe implementar una de las siguientes interfaces localizadas en el paquete `com.example.plugins`:
+
+  - InputPlugin<T>
+  - ProcessorPlugin<I, O>
+  - OutputPlugin<T>
+
+  Requiero:
+
+  1. El código Java del plugin completo, anotado con `@Component`.
+  2. Un DTO de configuración para el método `configure(Map<String, Object>)`. El plugin debe parsear este mapa al DTO usando `ObjectMapper.convertValue()`.
+
+  Información requerida para la generación:
+
+  - **Nombre del plugin**: [aquí el nombre, ej: plugin-input-getfrommssql]
+  - **Tipo de plugin**: Input | Processor | Output
+  - **Tipo de dato que procesa**: [ej: JsonNode, String, List<Map<String, Object>>, etc.]
+  - **Configuraciones necesarias**:
+    - Nombre del campo: tipo, descripción opcional o uso previsto
+    - [Ej: host: String, puerto: int, usuario: String, contraseña: String, baseDeDatos: String, query: String]
+
+  También quiero que:
+  - Las dependencias que podrían requerirse (por ejemplo, `spring-boot-starter-jdbc`, `com.microsoft.sqlserver:mssql-jdbc`, etc.)
+  - Posibles validaciones o configuraciones adicionales útiles para un entorno Spring Boot
+  ```

@@ -3,6 +3,7 @@ package com.example.plugins.input.webapi;
 import com.example.plugins.InputPlugin;
 import com.example.plugins.input.webapi.dtos.WebApiInputConfig;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -13,19 +14,20 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Map;
 
 @Component
+@RequiredArgsConstructor
 public class WebApiInputPlugin implements InputPlugin<String> {
-
+    private final ObjectMapper objectMapper;
+    private final RestTemplate restTemplate;
     private WebApiInputConfig config;
 
     @Override
     public void configure(Map<String, Object> configMap) {
-        this.config = new ObjectMapper().convertValue(configMap, WebApiInputConfig.class);
+        this.config = objectMapper.convertValue(configMap, WebApiInputConfig.class);
     }
 
     @Override
     public String read() {
         try {
-            RestTemplate restTemplate = new RestTemplate();
             HttpHeaders headers = new HttpHeaders();
             config.headers.forEach(headers::add);
             HttpEntity<String> entity = new HttpEntity<>(config.body, headers);
