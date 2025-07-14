@@ -20,6 +20,8 @@
       <module name="core-app" target="21" />
       <module name="input-jsonfile" target="21" />
       <module name="plugin-input-webapi (1)" target="21" />
+      <module name="plugin-output-file" target="21" />
+      <module name="plugin-processor-log" target="21" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

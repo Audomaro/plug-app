@@ -1,6 +1,7 @@
 package com.example.plugins.executor.dto;
 
-import lombok.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 

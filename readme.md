@@ -27,6 +27,60 @@ El executor lee las rutas, carga los plugins correspondientes, y ejecuta el fluj
 - **executor**
   Aplicación Spring Boot que lee el archivo JSON con las rutas, carga los JARs de plugins y ejecuta las rutas.
 
+## ⚠️ Importante si creas nuevos plugins con Spring Initializr
+
+Si usas [Spring Initializr](https://start.spring.io/) para crear un nuevo módulo plugin:
+
+1. **En el `pom.xml` raíz del proyecto (padre)**, asegúrate de tener configurado el plugin de JaCoCo para cobertura de pruebas:
+
+   ```xml
+   <pluginManagement>
+       <plugins>
+           <plugin>
+               <groupId>org.jacoco</groupId>
+               <artifactId>jacoco-maven-plugin</artifactId>
+               <version>0.8.12</version>
+               <executions>
+                   <execution>
+                       <goals>
+                           <goal>prepare-agent</goal>
+                       </goals>
+                   </execution>
+                   <execution>
+                       <id>report</id>
+                       <phase>verify</phase>
+                       <goals>
+                           <goal>report</goal>
+                       </goals>
+                   </execution>
+               </executions>
+           </plugin>
+       </plugins>
+   </pluginManagement>
+   ```
+1. Elimina el plugin spring-boot-maven-plugin del pom.xml del plugin creado, ya que los plugins no son aplicaciones ejecutables (no tienen clase main(...)). Mantener ese plugin causará errores como Unable to find main class.
+1. Incluye JaCoCo en el plugin directamente si no heredas de un pom padre:
+  
+    ```xml
+    <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+    </plugin>
+    ```
+
+## Generación y visualización de reportes de cobertura JaCoCo
+
+Para facilitar la ejecución de pruebas y la generación de reportes de cobertura de código con JaCoCo en todos los módulos, hemos incluido un script PowerShell llamado jacoco.ps1 en la raíz del proyecto.
+
+### Uso del script jacoco.ps1
+
+1. Abre una terminal PowerShell en la carpeta raíz del proyecto.
+1. Ejecuta el script con el siguiente comando:
+   ```ps1
+   .\jacoco.ps1
+   ```
+1. El script recorrerá todos los módulos, ejecutará las pruebas, generará los reportes JaCoCo y abrirá automáticamente en tu navegador las páginas HTML con los reportes para cada módulo.
+
 ## Estructura del JSON de configuración (`routes.json`)
 
 ```json

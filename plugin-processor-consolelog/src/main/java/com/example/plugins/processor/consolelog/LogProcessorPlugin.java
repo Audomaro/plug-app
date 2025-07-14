@@ -20,19 +20,22 @@ public class LogProcessorPlugin implements ProcessorPlugin<Object, Object> {
         this.config = objectMapper.convertValue(config, LogProcessorConfig.class);
     }
 
+    public String getPrefix() {
+        return (config != null && config.getLogPrefix() != null)
+                ? config.getLogPrefix()
+                : "LogProcessorPlugin:";
+    }
+
     @Override
     public Object process(Object data) {
-        // Obtener output según tipo y valor de data
+        String prefix = getPrefix();
+
         String output = (data instanceof JsonNode)
                 ? data.toString()
                 : (data != null ? data.toString() : "null");
 
-        // Obtener prefijo seguro
-        String prefix = (config != null && config.getLogPrefix() != null)
-                ? config.getLogPrefix()
-                : "LogProcessorPlugin:";
-
         System.out.println(prefix + " " + output);
+
         return data;
     }
 

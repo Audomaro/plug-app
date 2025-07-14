@@ -18,6 +18,7 @@
         <option value="$PROJECT_DIR$/plugin-processor-consolelog/pom.xml" />
         <option value="$PROJECT_DIR$/plugin-output-jsonfile/pom.xml" />
         <option value="$PROJECT_DIR$/executor/pom.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
